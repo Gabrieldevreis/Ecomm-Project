@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { SellerService } from '../services/seller.service';
 import { signUp } from '../data-type';
 import { Router} from '@angular/router'
+import { authGuard } from '../auth.guard';
 
 @Component({
   selector: 'app-seller-auth',
@@ -14,10 +15,7 @@ export class SellerAuthComponent {
   ngOnInit() :void{}
   signUp(data:signUp):void{
       console.warn(data)
-      this.seller.userSignUp(data).subscribe((result)=>{
-        if(result){
-          this.router.navigate(['seller-home'])
-        }
-      })
+      this.seller.userSignUp(data)
     }    
 }
+
